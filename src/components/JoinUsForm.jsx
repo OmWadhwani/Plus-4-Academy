@@ -33,11 +33,25 @@ export default function JoinUsForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "phoneNumber") {
+      const digitsOnly = value.replace(/\D/g, "");
+      if (digitsOnly.length <= 10) {
+        setFormData((prev) => ({ ...prev, phoneNumber: digitsOnly }));
+      }
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formData.phoneNumber.length !== 10) {
+      alert("Phone number must be exactly 10 digits");
+      return;
+    }
 
     emailjs
       .send(
@@ -86,7 +100,6 @@ export default function JoinUsForm() {
               patience and feedback.
             </p>
 
-            {/* Beta Notice CSS – ONLY THIS */}
             <style>{`
               .beta-notice {
                 background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
@@ -151,7 +164,11 @@ export default function JoinUsForm() {
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  placeholder="Enter your phone number"
+                  placeholder="Enter 10-digit phone number"
+                  inputMode="numeric"
+                  pattern="[0-9]{10}"
+                  minLength={10}
+                  maxLength={10}
                   required
                 />
               </div>

@@ -1,6 +1,5 @@
-"use client";
-
 import { useRef, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -11,9 +10,11 @@ import JoinUsForm from "./components/JoinUsForm";
 import Footer from "./components/Footer";
 import FloatingJoinButton from "./components/FloatingJoinButton";
 import JoinUsFormModal from "./components/JoinUsFormModal";
+import RefundPolicyPage from "./components/RefundPolicyPage";
 import "./styles.css";
 
-export default function App() {
+// Home Page Component
+function HomePage() {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const galleryRef = useRef(null);
@@ -28,7 +29,7 @@ export default function App() {
   };
 
   return (
-    <div className="app">
+    <>
       <TopBar />
       <Navbar
         onHomeClick={() => scrollToSection(homeRef)}
@@ -42,7 +43,6 @@ export default function App() {
       />
 
       <FloatingJoinButton onJoinClick={() => scrollToSection(joinRef)} />
-
       <JoinUsFormModal />
 
       <section ref={homeRef}>
@@ -68,7 +68,20 @@ export default function App() {
       <section ref={contactRef}>
         <Footer />
       </section>
-    </div>
+    </>
   );
 }
 
+// Main App with Router
+export default function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/RefundandCancellation" element={<RefundPolicyPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}

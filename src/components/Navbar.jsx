@@ -1,5 +1,6 @@
 "use client";
 import logo from "../assets/SiteLogo.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar({
   onHomeClick,
@@ -42,12 +43,16 @@ export default function Navbar({
           <button onClick={onGalleryClick} className="nav-link">
             Our Gallery
           </button>
-          <button onClick={onReviewsClick} className="nav-link">
+          <button onClick={onReviewsClick} className="nav-link" >
             Reviews
           </button>
-          <button onClick={onContactClick} className="nav-link">
+          <Link
+            to="/ContactUs"
+            className="nav-link" 
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Contact Us
-          </button>
+          </Link>
           <button onClick={onJoinClick} className="nav-link cta-button">
             Join Us
           </button>

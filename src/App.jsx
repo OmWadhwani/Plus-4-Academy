@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import FloatingJoinButton from "./components/FloatingJoinButton";
 import JoinUsFormModal from "./components/JoinUsFormModal";
 import RefundPolicyPage from "./components/RefundPolicyPage";
+import ContactUsPage from "./components/ContactUsPage";
 import "./styles.css";
 
 // Home Page Component
@@ -80,6 +81,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/RefundandCancellation" element={<RefundPolicyPage />} />
+          <Route path="/ContactUs" element={<ContactUsPage />} />
         </Routes>
       </div>
     </Router>

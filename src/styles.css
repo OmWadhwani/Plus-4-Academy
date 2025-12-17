@@ -133,7 +133,7 @@ section {
    ======================================== */
 /* Updated top bar styling with flexbox layout and clickable links */
 .top-bar {
-  background: linear-gradient(135deg, #6b21a8 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #6b21a8 0%, #6366f1 100%);
   color: white;
   padding: 8px 0;
   position: sticky;
@@ -235,6 +235,7 @@ section {
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s ease;
+  text-decoration: none;
   position: relative;
   font-family: "Poppins", sans-serif;
 }
@@ -1461,8 +1462,10 @@ section {
 .refund-policy-link {
   background: none;
   border: none;
-  color: #8b5cf6;
+  /* color: #8b5cf6; */
+  color: #6366f1;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
   transition: color 0.3s ease;
@@ -1472,6 +1475,7 @@ section {
 
 .refund-policy-link:hover {
   color: #a78bfa;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -1860,4 +1864,21 @@ section {
     gap: 15px;
     text-align: center;
   }
+}
+.footer-bottom-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.contact-us-link {
+  font-weight: 600;
+  color: #6366f1;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.contact-us-link:hover {
+  text-decoration: underline;
+  color: #a78bfa;
 }

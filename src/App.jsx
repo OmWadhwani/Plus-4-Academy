@@ -12,6 +12,7 @@ import FloatingJoinButton from "./components/FloatingJoinButton";
 import JoinUsFormModal from "./components/JoinUsFormModal";
 import RefundPolicyPage from "./components/RefundPolicyPage";
 import ContactUsPage from "./components/ContactUsPage";
+import TermsAndConditions from "./components/TermsandConditions";
 import "./styles.css";
 
 // Home Page Component
@@ -82,6 +83,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/RefundandCancellation" element={<RefundPolicyPage />} />
           <Route path="/ContactUs" element={<ContactUsPage />} />
+          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
         </Routes>
       </div>
     </Router>

@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="footer-content">
           {/* Contact Info */}
           <div className="footer-section contact-info">
-            <h3>Plus 4 Academy</h3>
+            <h3>Plus four Academy</h3>
 
             <p className="address">
               <a
@@ -51,7 +51,7 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <div className="footer-bottom">
-          <p>© {currentYear} Plus 4 Academy. All rights reserved.</p>
+          <p>© {currentYear} Plus four Academy. All rights reserved.</p>
 
           <div className="footer-bottom-links">
             <Link to="/RefundandCancellation" className="refund-policy-link">

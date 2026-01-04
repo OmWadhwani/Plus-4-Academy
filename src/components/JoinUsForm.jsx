@@ -13,6 +13,7 @@ export default function JoinUsForm() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,6 +39,8 @@ export default function JoinUsForm() {
       const digitsOnly = value.replace(/\D/g, "");
       if (digitsOnly.length <= 10) {
         setFormData((prev) => ({ ...prev, phoneNumber: digitsOnly }));
+        // Clear error when user types
+        if (phoneError) setPhoneError("");
       }
       return;
     }
@@ -49,7 +52,7 @@ export default function JoinUsForm() {
     e.preventDefault();
 
     if (formData.phoneNumber.length !== 10) {
-      alert("Phone number must be exactly 10 digits");
+      setPhoneError("Please enter 10 digit mobile number");
       return;
     }
 
@@ -66,6 +69,7 @@ export default function JoinUsForm() {
       )
       .then(() => {
         setSubmitted(true);
+        setPhoneError("");
 
         setTimeout(() => {
           setSubmitted(false);
@@ -132,6 +136,52 @@ export default function JoinUsForm() {
                 position: relative;
                 z-index: 1;
               }
+
+              .phone-error {
+                background-color: #fee2e2;
+                border: 1px solid #ef4444;
+                border-radius: 6px;
+                padding: 12px 16px;
+                margin-top: 8px;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                animation: slideDown 0.3s ease-out;
+              }
+
+              .phone-error-icon {
+                color: #ef4444;
+                font-size: 18px;
+                font-weight: bold;
+              }
+
+              .phone-error-text {
+                color: #dc2626;
+                font-size: 14px;
+                font-weight: 500;
+                margin: 0;
+              }
+
+              @keyframes slideDown {
+                from {
+                  opacity: 0;
+                  transform: translateY(-10px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+
+              .form-group.has-error input {
+                border-color: #ef4444;
+              }
+
+              .form-group.has-error input:focus {
+                border-color: #dc2626;
+                box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+              }
             `}</style>
           </div>
           {/* ===== End Beta Notice ===== */}
@@ -156,7 +206,7 @@ export default function JoinUsForm() {
                 />
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${phoneError ? "has-error" : ""}`}>
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input
                   type="tel"
@@ -172,6 +222,13 @@ export default function JoinUsForm() {
                   required
                 />
               </div>
+
+              {phoneError && (
+                <div className="phone-error">
+                  <span className="phone-error-icon">⚠</span>
+                  <p className="phone-error-text">{phoneError}</p>
+                </div>
+              )}
 
               <div className="form-group">
                 <label htmlFor="courseInterested">Course Interested In</label>

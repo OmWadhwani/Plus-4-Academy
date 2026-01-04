@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./components/CartContext";
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -12,7 +13,9 @@ import FloatingJoinButton from "./components/FloatingJoinButton";
 import JoinUsFormModal from "./components/JoinUsFormModal";
 import RefundPolicyPage from "./components/RefundPolicyPage";
 import ContactUsPage from "./components/ContactUsPage";
-import TermsAndConditions from "./components/TermsandConditions";
+import Courses from "./components/Courses";
+import CourseDetail from "./components/CourseDetail";
+import Cart from "./components/Cart";
 import "./styles.css";
 
 // Home Page Component
@@ -77,15 +80,22 @@ function HomePage() {
 // Main App with Router
 export default function App() {
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/RefundandCancellation" element={<RefundPolicyPage />} />
-          <Route path="/ContactUs" element={<ContactUsPage />} />
-          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
-        </Routes>
-      </div>
-    </Router>
+    <CartProvider>
+      <Router>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/RefundandCancellation"
+              element={<RefundPolicyPage />}
+            />
+            <Route path="/ContactUs" element={<ContactUsPage />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/course/:courseId" element={<CourseDetail />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
+      </Router>
+    </CartProvider>
   );
 }

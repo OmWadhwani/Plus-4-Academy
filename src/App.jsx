@@ -13,6 +13,7 @@ import FloatingJoinButton from "./components/FloatingJoinButton";
 import JoinUsFormModal from "./components/JoinUsFormModal";
 import RefundPolicyPage from "./components/RefundPolicyPage";
 import ContactUsPage from "./components/ContactUsPage";
+import TermsandConditions from "./components/TermsandConditions";
 import Courses from "./components/Courses";
 import CourseDetail from "./components/CourseDetail";
 import Cart from "./components/Cart";
@@ -90,6 +91,10 @@ export default function App() {
               element={<RefundPolicyPage />}
             />
             <Route path="/ContactUs" element={<ContactUsPage />} />
+            <Route
+              path="/TermsandConditions"
+              element={<TermsandConditions />}
+            />
             <Route path="/courses" element={<Courses />} />
             <Route path="/course/:courseId" element={<CourseDetail />} />
             <Route path="/cart" element={<Cart />} />
